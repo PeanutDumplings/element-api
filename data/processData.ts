@@ -62,6 +62,20 @@ jsonData.forEach((element) => {
   );
 });
 
+// Round electronegativity to 2 decimal places
+jsonData.forEach((element) => {
+  element.electronegativity = isNaN(
+    parseFloat(element.electronegativity.toString())
+  )
+    ? ""
+    : parseFloat(element.electronegativity.toString()).toFixed(2);
+});
+
+// Transform oxidation states to array
+jsonData.forEach((element: any) => {
+  element.oxidationStates = element.oxidationStates.toString().split(", ");
+});
+
 const jsonString = JSON.stringify(jsonData, null, 2);
 const outputFile = path.join(outputDir, "processed_data.json");
 fs.writeFileSync(outputFile, jsonString);
