@@ -4,7 +4,6 @@ import fs from "fs";
 import path from "path";
 
 const csv = json2csv(processed_data);
-// console.log(csv);
 
 const outputDir = "./data/output";
 

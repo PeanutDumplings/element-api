@@ -6,12 +6,43 @@ import type {
   XataRecord,
 } from "@xata.io/client";
 
-const tables = [] as const;
+const tables = [
+  {
+    name: "elements",
+    columns: [
+      { name: "atomicNumber", type: "int" },
+      { name: "symbol", type: "string" },
+      { name: "name", type: "string" },
+      { name: "atomicMass", type: "float" },
+      { name: "cpkHexColor", type: "string" },
+      { name: "electronicConfiguration", type: "string" },
+      { name: "electronegativity", type: "float" },
+      { name: "atomicRadius", type: "int" },
+      { name: "ionRadius", type: "string" },
+      { name: "vanDerWaalsRadius", type: "int" },
+      { name: "ionizationEnergy", type: "int" },
+      { name: "electronAffinity", type: "int" },
+      { name: "oxidationStates", type: "multiple" },
+      { name: "standardState", type: "string" },
+      { name: "bondingType", type: "string" },
+      { name: "meltingPoint", type: "int" },
+      { name: "boilingPoint", type: "int" },
+      { name: "density", type: "float" },
+      { name: "groupBlock", type: "string" },
+      { name: "yearDiscovered", type: "string" },
+    ],
+  },
+] as const;
 
 export type SchemaTables = typeof tables;
 export type InferredTypes = SchemaInference<SchemaTables>;
 
-export type DatabaseSchema = {};
+export type Elements = InferredTypes["elements"];
+export type ElementsRecord = Elements & XataRecord;
+
+export type DatabaseSchema = {
+  elements: ElementsRecord;
+};
 
 const DatabaseClient = buildClient();
 
