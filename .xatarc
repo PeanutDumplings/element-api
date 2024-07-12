@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://element-api-fc9j34.ap-southeast-2.xata.sh/db/api",
+  "codegen": {
+    "output": "lib/xata.ts"
+  }
+}
