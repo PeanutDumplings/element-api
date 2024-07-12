@@ -1,12 +1,31 @@
 import capitalizeFirstLetter from "@/lib/capitaliseFirstLetter";
+import validateFetch from "@/lib/validateFetch";
 import { getXataClient } from "@/lib/xata";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest, { params }: { params: { symbol: string } }) {
     try {
         const symbol = capitalizeFirstLetter(params.symbol);
+        let fetch: any = request.nextUrl.searchParams.get("fetch");
+
+        if (fetch) {
+            fetch = fetch.split(",");
+            const validFetch = validateFetch(fetch);
+            if (validFetch !== true) {
+                return NextResponse.json(
+                    {
+                        success: false,
+                        message: `Invalid field '${validFetch.field}' in fetch query.`,
+                        validFields: validFetch.allowedFetch,
+                    },
+                    { status: 400, headers: { "Content-Type": "application/json" } }
+                );
+            }
+        }
+
         const query = await getXataClient()
-            .db.elements.filter({
+            .db.elements.select(fetch)
+            .filter({
                 symbol,
             })
             .getFirst();
