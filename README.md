@@ -6,7 +6,7 @@ _Elements data gotten from https://github.com/neelpatel05/periodic-table-api and
 
 ## Endpoints
 
-**The api can be accessed at https://elements.dumplings.dev/**
+**The api can be accessed at https://elements.apis.lol/**
 
 **Each of the following routes returns the following data object**
 
@@ -51,7 +51,7 @@ _Elements data gotten from https://github.com/neelpatel05/periodic-table-api and
 
 ```http
 GET /api/elements?limit=1&fetch=atomicMass,name,density
-Host: elements.dumplings.dev
+Host: elements.apis.lol
 ```
 
 **Example Successful Response:**
@@ -99,7 +99,7 @@ Host: elements.dumplings.dev
 
 ```http
 GET /api/elements/atomicnumber/3&fetch=atomicMass,name,density
-Host: elements.dumplings.dev
+Host: elements.apis.lol
 ```
 
 **Example Successful Response:**
@@ -128,7 +128,7 @@ Host: elements.dumplings.dev
 
 ```http
 GET /api/elements/name/lithium&fetch=atomicMass,name,density
-Host: elements.dumplings.dev
+Host: elements.apis.lol
 ```
 
 **Example Successful Response:**
@@ -157,7 +157,7 @@ Host: elements.dumplings.dev
 
 ```http
 GET /api/elements/symbol/li&fetch=atomicMass,name,density
-Host: elements.dumplings.dev
+Host: elements.apis.lol
 ```
 
 **Example Successful Response:**
@@ -186,7 +186,7 @@ Host: elements.dumplings.dev
 
 ```http
 GET /api/elements/bondingtype/diatomic?limit=1&fetch=atomicMass,name,density
-Host: elements.dumplings.dev
+Host: elements.apis.lol
 ```
 
 **Example Successful Response:**
@@ -217,7 +217,7 @@ Host: elements.dumplings.dev
 
 ```http
 GET /api/elements/block/alkali metal?limit=1&fetch=atomicMass,name,density
-Host: elements.dumplings.dev
+Host: elements.apis.lol
 ```
 
 **Example Successful Response:**
@@ -248,7 +248,7 @@ Host: elements.dumplings.dev
 
 ```http
 GET /api/elements/state/gas?limit=1&fetch=atomicMass,name,density
-Host: elements.dumplings.dev
+Host: elements.apis.lol
 ```
 
 **Example Successful Response:**

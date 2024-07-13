@@ -34,7 +34,12 @@ export async function GET(request: NextRequest, { params }: { params: { bonding:
 
             if (!query.length) {
                 return NextResponse.json(
-                    { success: false, message: `No elements with bonding type '${bondingType}' found`, bondingType },
+                    {
+                        success: false,
+                        message: `No elements with bonding type '${bondingType}' found`,
+                        bondingType,
+                        validBondingTypes: ["diatomic", "atomic", "metallic", "covalent network"],
+                    },
                     { status: 404, headers: { "Content-Type": "application/json" } }
                 );
             }
@@ -61,7 +66,12 @@ export async function GET(request: NextRequest, { params }: { params: { bonding:
 
             if (!query.records.length) {
                 return NextResponse.json(
-                    { success: false, message: `No elements with bonding type '${bondingType}' found`, bondingType },
+                    {
+                        success: false,
+                        message: `No elements with bonding type '${bondingType}' found`,
+                        bondingType,
+                        validBondingTypes: ["diatomic", "atomic", "metallic", "covalent network"],
+                    },
                     { status: 404, headers: { "Content-Type": "application/json" } }
                 );
             }

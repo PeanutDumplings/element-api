@@ -1,10 +1,12 @@
+import randomEndpoint from "@/lib/randomEndpoint";
+
 export default function Home() {
     return (
         <div className="relative flex flex-col min-h-screen bg-gradient-to-br bg-opacity-25 from-purple-500/20 to-indigo-500/20 ">
             <main className="flex flex-col items-center justify-center flex-1 p-24 text-center w-full gap-10">
-                <h1 className="font-semibold text-8xl md:text-8xl mb-6">Element API</h1>
+                <h1 className="font-semibold text-8xl md:text-8xl mb-6">Elements API</h1>
 
-                <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-2 lg:text-left">
+                <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-[41rem] lg:grid-cols-2 lg:text-left">
                     <a
                         href="https://github.com/PeanutDumplings/element-api/blob/master/README.md"
                         className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
@@ -15,11 +17,11 @@ export default function Home() {
                             Documentation{" "}
                             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">-&gt;</span>
                         </h2>
-                        <p className="m-0 max-w-[30ch] text-sm opacity-50">Get information for each available endpoint</p>
+                        <p className="m-0 max-w-[20ch] text-sm opacity-50">Get information for each available endpoint</p>
                     </a>
 
                     <a
-                        href="https://google.com"
+                        href={randomEndpoint()}
                         className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -28,14 +30,10 @@ export default function Home() {
                             Random Endpoint{" "}
                             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">-&gt;</span>
                         </h2>
-                        <p className="m-0 max-w-[30ch] text-sm opacity-50">Click to visit a random endpoint!</p>
+                        <p className="m-0 max-w-[20ch] text-sm opacity-50">Click to visit a random endpoint!</p>
                     </a>
                 </div>
             </main>
-
-            <footer className="absolute bottom-0 left-0 w-full p-2 text-center">
-                <p>Yes this is bland and basic - I suck at CSS :(</p>
-            </footer>
         </div>
     );
 }
