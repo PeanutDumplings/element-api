@@ -1,36 +1,268 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Element API
 
-## Getting Started
+**An API that returns information about the elements from the periodic table**
 
-First, run the development server:
+_Elements data gotten from https://github.com/neelpatel05/periodic-table-api and manipulated (changing values) in this application_
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Endpoints
+
+**The api can be accessed at https://elements.dumplings.dev/**
+
+**Each of the following routes returns the following data object**
+
+```js
+{
+    success: boolean,
+    message: string,
+    data: {
+        atomicMass: float,
+        atomicNumber: integer,
+        atomicRadius: integer | null,
+        boilingPoint: integer | null,
+        bondingType: string | null,
+        cpkHexColor: string | null,
+        density: float | null,
+        electronAffinity: integer | null,
+        electronegativity: float | null,
+        electronicConfiguration: string,
+        groupBlock: string,
+        ionizationEnergy: integer| null,
+        ionRadius: string | null,
+        meltingPoint: integer | null,
+        name: string,
+        oxidationStates: string[],
+        standardState: "gas" | "liquid" | "solid" | null,
+        symbol: string,
+        vanDerWaalsRadius: integer | null,
+        yearDiscovered: integer | "Ancient"
+    } | data[]
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Fetch all elements
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Route:** `/api/elements?limit=number&fetch=string`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Method:** `GET`
 
-## Learn More
+**Description:** This endpoint fetches all the elements from the periodic table. Omitting a limit query parameter will return all 118 elements. Omitting the fetch query parameter will return all data for each element.
 
-To learn more about Next.js, take a look at the following resources:
+**Example request**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```http
+GET /api/elements?limit=1&fetch=atomicMass,name,density
+Host: elements.dumplings.dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Example Successful Response:**
 
-## Deploy on Vercel
+```json
+{
+    "success": true,
+    "message": "Successfully fetched element",
+    "data": [
+        {
+            "atomicMass": 1.0079,
+            "atomicNumber": 1,
+            "atomicRadius": 37,
+            "boilingPoint": 20,
+            "bondingType": "diatomic",
+            "cpkHexColor": "FFFFFF",
+            "density": 0.0000899,
+            "electronAffinity": -73,
+            "electronegativity": 2.2,
+            "electronicConfiguration": "1s¹",
+            "groupBlock": "nonmetal",
+            "ionizationEnergy": 1312,
+            "ionRadius": null,
+            "meltingPoint": 14,
+            "name": "Hydrogen",
+            "oxidationStates": ["-1", "1"],
+            "standardState": "gas",
+            "symbol": "H",
+            "vanDerWaalsRadius": 120,
+            "yearDiscovered": "1766"
+        }
+    ]
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. Fetch element by atomic number
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Route:** `/api/atomicnumber/[atomicnumber]/?fetch=string`
+
+**Method:** `GET`
+
+**Description:** This endpoint fetches the element with the provided atomic number. Omitting the fetch query parameter will return all data for each element.
+
+**Example request**
+
+```http
+GET /api/elements/atomicnumber/3&fetch=atomicMass,name,density
+Host: elements.dumplings.dev
+```
+
+**Example Successful Response:**
+
+```json
+{
+    "success": true,
+    "message": "Successfully fetched element",
+    "data": {
+        "atomicMass": 6.941,
+        "density": 0.535,
+        "name": "Lithium"
+    }
+}
+```
+
+### 3. Fetch element by name
+
+**Route:** `/api/name/[name]/?fetch=string`
+
+**Method:** `GET`
+
+**Description:** This endpoint fetches the element with the provided name. Omitting the fetch query parameter will return all data for each element.
+
+**Example request**
+
+```http
+GET /api/elements/name/lithium&fetch=atomicMass,name,density
+Host: elements.dumplings.dev
+```
+
+**Example Successful Response:**
+
+```json
+{
+    "success": true,
+    "message": "Successfully fetched element",
+    "data": {
+        "atomicMass": 6.941,
+        "density": 0.535,
+        "name": "Lithium"
+    }
+}
+```
+
+### 4. Fetch element by symbol
+
+**Route:** `/api/symbol/[symbol]/?fetch=string`
+
+**Method:** `GET`
+
+**Description:** This endpoint fetches the element with the provided symbol. Omitting the fetch query parameter will return all data for each element.
+
+**Example request**
+
+```http
+GET /api/elements/symbol/li&fetch=atomicMass,name,density
+Host: elements.dumplings.dev
+```
+
+**Example Successful Response:**
+
+```json
+{
+    "success": true,
+    "message": "Successfully fetched element",
+    "data": {
+        "atomicMass": 6.941,
+        "density": 0.535,
+        "name": "Lithium"
+    }
+}
+```
+
+### 5. Fetch elements by bonding type
+
+**Route:** `/api/bondingtype/[bondingtype]/?limit=number&fetch=string`
+
+**Method:** `GET`
+
+**Description:** This endpoint fetches elements with the provided bonding type. Omitting a limit query parameter will return all elements with the provided bonding type. Omitting the fetch query parameter will return all data for each element.
+
+**Example request**
+
+```http
+GET /api/elements/bondingtype/diatomic?limit=1&fetch=atomicMass,name,density
+Host: elements.dumplings.dev
+```
+
+**Example Successful Response:**
+
+```json
+{
+    "success": true,
+    "message": "Successfully fetched element",
+    "data": [
+        {
+            "atomicMass": 1.0079,
+            "density": 0.0000899,
+            "name": "Hydrogen"
+        }
+    ]
+}
+```
+
+### 6. Fetch elements in block
+
+**Route:** `/api/block/[block]/?limit=number&fetch=string`
+
+**Method:** `GET`
+
+**Description:** This endpoint fetches elements in the provided block. Omitting a limit query parameter will return all elements in the provided block. Omitting the fetch query parameter will return all data for each element.
+
+**Example request**
+
+```http
+GET /api/elements/block/alkali metal?limit=1&fetch=atomicMass,name,density
+Host: elements.dumplings.dev
+```
+
+**Example Successful Response:**
+
+```json
+{
+    "success": true,
+    "message": "Successfully fetched element",
+    "data": [
+        {
+            "atomicMass": 6.941,
+            "density": 0.535,
+            "name": "Lithium"
+        }
+    ]
+}
+```
+
+### 7. Fetch elements by standard state
+
+**Route:** `/api/state/[state]/?limit=number&fetch=string`
+
+**Method:** `GET`
+
+**Description:** This endpoint fetches elements that have the provided state at STP. Omitting a limit query parameter will return all elements with the provided state at STP. Omitting the fetch query parameter will return all data for each element.
+
+**Example request**
+
+```http
+GET /api/elements/state/gas?limit=1&fetch=atomicMass,name,density
+Host: elements.dumplings.dev
+```
+
+**Example Successful Response:**
+
+```json
+{
+    "success": true,
+    "message": "Successfully fetched element",
+    "data": [
+        {
+            "atomicMass": 1.0079,
+            "density": 0.0000899,
+            "name": "Hydrogen"
+        }
+    ]
+}
+```
