@@ -295,9 +295,7 @@ const randomEndpoint = () => {
         random = Math.floor(Math.random() * 7);
     }
 
-    const url = `https://elements.apis.lol/${endpoints[random]}`;
-    console.log(url);
-    return url;
+    return `https://elements.apis.lol/${endpoints[random]}`;
 };
 
 export default randomEndpoint;
