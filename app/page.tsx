@@ -1,5 +1,3 @@
-import randomEndpoint from "@/lib/randomEndpoint";
-
 export default function Home() {
     return (
         <div className="relative flex flex-col min-h-screen bg-gradient-to-br bg-opacity-25 from-purple-500/20 to-indigo-500/20 ">
@@ -36,4 +34,8 @@ export default function Home() {
             </main>
         </div>
     );
+}
+
+function randomEndpoint() {
+    return "/api/random";
 }
