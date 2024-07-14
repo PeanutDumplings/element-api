@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Proton",
+        "charge": "+1",
+        "mass": 1.00728,
+        "antiparticle": "Antiproton",
+        "composition": {
+            "quark": {
+                "up": 2,
+                "down": 1
+            }
+        }
+    },
+    {
+        "name": "Neutron",
+        "charge": "0",
+        "mass": 1.00867,
+        "antiparticle": "Antineutron",
+        "composition": {
+            "quark": {
+                "up": 1,
+                "down": 2
+            }
+        }
+    },
+    {
+        "name": "Electron",
+        "charge": "-1",
+        "mass": 0.00055,
+        "antiparticle": "Positron"
+    },
+    {
+        "name": "Antiproton",
+        "charge": "-1",
+        "mass": 1.00728,
+        "antiparticle": "Proton",
+        "composition": {
+            "antiquark": {
+                "up": 2,
+                "down": 1
+            }
+        }
+    },
+    {
+        "name": "Antineutron",
+        "charge": "0",
+        "mass": 1.00867,
+        "antiparticle": "Neutron",
+        "composition": {
+            "antiquark": {
+                "up": 1,
+                "down": 2
+            }
+        }
+    },
+    {
+        "name": "Positron",
+        "charge": "+1",
+        "mass": 0.00055,
+        "antiparticle": "Electron"
+    }
+]

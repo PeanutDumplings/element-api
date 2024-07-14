@@ -1,0 +1,7 @@
+name,charge,mass,antiparticle,composition.quark.up,composition.quark.down,composition.antiquark.up,composition.antiquark.down
+Proton,+1,1.00728,Antiproton,2,1,null,null
+Neutron,0,1.00867,Antineutron,1,2,null,null
+Electron,-1,0.00055,Positron,null,null,null,null
+Antiproton,-1,1.00728,Proton,null,null,2,1
+Antineutron,0,1.00867,Neutron,null,null,1,2
+Positron,+1,0.00055,Electron,null,null,null,null
