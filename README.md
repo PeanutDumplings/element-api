@@ -89,7 +89,7 @@ Host: elements.apis.lol
 
 ### 2. Fetch element by atomic number
 
-**Route:** `/api/atomicnumber/[atomicnumber]/?fetch=string`
+**Route:** `/api/elements/atomicnumber/[atomicnumber]/?fetch=string`
 
 **Method:** `GET`
 
@@ -118,7 +118,7 @@ Host: elements.apis.lol
 
 ### 3. Fetch element by name
 
-**Route:** `/api/name/[name]/?fetch=string`
+**Route:** `/api/elements/name/[name]/?fetch=string`
 
 **Method:** `GET`
 
@@ -147,7 +147,7 @@ Host: elements.apis.lol
 
 ### 4. Fetch element by symbol
 
-**Route:** `/api/symbol/[symbol]/?fetch=string`
+**Route:** `/api/elements/symbol/[symbol]/?fetch=string`
 
 **Method:** `GET`
 
@@ -176,7 +176,7 @@ Host: elements.apis.lol
 
 ### 5. Fetch elements by bonding type
 
-**Route:** `/api/bondingtype/[bondingtype]/?limit=number&fetch=string`
+**Route:** `/api/elements/bondingtype/[bondingtype]/?limit=number&fetch=string`
 
 **Method:** `GET`
 
@@ -207,7 +207,7 @@ Host: elements.apis.lol
 
 ### 6. Fetch elements in block
 
-**Route:** `/api/block/[block]/?limit=number&fetch=string`
+**Route:** `/api/elements/block/[block]/?limit=number&fetch=string`
 
 **Method:** `GET`
 
@@ -238,7 +238,7 @@ Host: elements.apis.lol
 
 ### 7. Fetch elements by standard state
 
-**Route:** `/api/state/[state]/?limit=number&fetch=string`
+**Route:** `/api/elements/state/[state]/?limit=number&fetch=string`
 
 **Method:** `GET`
 
